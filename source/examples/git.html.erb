@@ -44,14 +44,14 @@ var master = new joint.dia.Link({
     source: { id: initial.id, selector: 'circle'},
     target: { id: fork.id, selector: 'circle' },
     attrs: {},
-//    vertices: [{ x: 50, y: 120 }, { x: 90, y: 150 }],
+    vertices: [{ x: 50, y: 160 }],
 });
 
 var branch = new joint.dia.Link({
     source: { id: fork.id, selector: 'circle' },
     target: { id: mergepoint.id, selector: 'circle' },
     attrs: {},
-//    vertices: [{ x: 210, y: 150 }, { x: 290, y: 120 }],
+    vertices: [{ x: 290, y: 160 }],
 });
 
 var mainline = new joint.dia.Link({
