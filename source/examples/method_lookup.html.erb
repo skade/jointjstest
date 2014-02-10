@@ -1,0 +1,64 @@
+---
+title: Method lookup
+---
+
+<div id="paper" class="paper"></paper>
+<script type="text/javascript" charset="utf-8">
+var graph = new joint.dia.Graph;
+
+var paper = new joint.dia.Paper({
+    el: $('#paper'),
+    width: 800,
+    height: 1000,
+    gridSize: 10,
+    perpendicularLinks: true,
+    model: graph
+});
+
+var ruby = joint.shapes.ruby;
+
+var superklass = new ruby.Class({
+    position: {x: 10,  y: 100},
+    attrs: { text: { text: 'Animal' } },
+    methods: {
+        'class': ['class_method'],
+        'instance': ['instance_method']
+    }
+})
+var klass = new ruby.Class({
+    position: {x: 10,  y: 400},
+    attrs: { text: { text: 'Giraffe' } },
+    methods: {
+        'class': ['class_method'],
+        'instance': ['instance_method']
+    }
+})
+
+var inherit = new joint.dia.Link({
+    source: { id: klass.id },
+    target: { id: superklass.id },
+    attrs: {},
+    attrs: {
+        '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' }
+    },
+});
+
+var pointer = new joint.dia.Link({
+    source: { x: 200, y: 450 },
+    target: { x: 150, y: 450 },
+    attrs: {
+        '.marker-target': { fill: 'yellow', d: 'M 10 0 L 0 5 L 10 10 z' }
+    },
+});
+
+graph.addCell([pointer,superklass, klass, inherit]);
+
+pointer.transition('source/y', 150, {
+    delay: 100,
+    duration: 1000
+});
+pointer.transition('target/y', 150, {
+    delay: 100,
+    duration: 1000
+});
+</script>

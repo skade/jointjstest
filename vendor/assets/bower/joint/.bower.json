@@ -1,0 +1,15 @@
+{
+  "name": "joint",
+  "homepage": "https://github.com/DavidDurman/joint",
+  "version": "0.8.0",
+  "_release": "0.8.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.8.0",
+    "commit": "a4eb684fe17911a72a27d1e65c878182015977da"
+  },
+  "_source": "git://github.com/DavidDurman/joint.git",
+  "_target": "~0.8.0",
+  "_originalSource": "joint",
+  "_direct": true
+}

@@ -1,0 +1,72 @@
+---
+title: git
+---
+
+<div id="paper" class="paper"></paper>
+<script type="text/javascript" charset="utf-8">
+var graph = new joint.dia.Graph;
+
+var paper = new joint.dia.Paper({
+    el: $('#paper'),
+    width: 800,
+    height: 350,
+    gridSize: 10,
+    perpendicularLinks: true,
+    model: graph
+});
+
+var git = joint.shapes.git;
+
+
+
+var initial = new git.Commit({
+    position: {x: 10,  y: 100},
+    attrs: {
+        text: { text: 'caffee' }
+    }
+});
+
+var fork = new git.Commit({
+    position: {x: 160, y: 150},
+    attrs: {
+        text: { text: 'ffcaee' }
+    }
+});
+
+var mergepoint = new git.Commit({
+    position: {x: 310, y: 100},
+    attrs: {
+        text: { text: 'ffeeca' }
+    }
+});
+
+var master = new joint.dia.Link({
+    source: { id: initial.id, selector: 'circle'},
+    target: { id: fork.id, selector: 'circle' },
+    attrs: {},
+//    vertices: [{ x: 50, y: 120 }, { x: 90, y: 150 }],
+});
+
+var branch = new joint.dia.Link({
+    source: { id: fork.id, selector: 'circle' },
+    target: { id: mergepoint.id, selector: 'circle' },
+    attrs: {},
+//    vertices: [{ x: 210, y: 150 }, { x: 290, y: 120 }],
+});
+
+var mainline = new joint.dia.Link({
+    source: { id: initial.id, selector: 'circle' },
+    target: { id: mergepoint.id, selector: 'circle' },
+    attrs: {}
+});
+
+
+//master.set('smooth', true)
+//branch.set('smooth', true)
+//mainline.set('smooth', true)
+
+joint.util.setByPath(mergepoint, 'attributes/attrs/circle/stroke', 'red', '/')
+joint.util.setByPath(initial, 'attributes/attrs/circle/stroke', 'red', '/')
+
+graph.addCell([fork, mergepoint, initial, master, branch, mainline]);
+</script>

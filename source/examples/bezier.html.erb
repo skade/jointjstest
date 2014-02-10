@@ -1,0 +1,26 @@
+<div id="paper" class="paper"></paper>
+
+<script type="text/javascript" charset="utf-8">
+var graph = new joint.dia.Graph;
+
+var paper = new joint.dia.Paper({
+    el: $('#paper'),
+    width: 800,
+    height: 350,
+    gridSize: 10,
+    perpendicularLinks: true,
+    model: graph
+});
+
+var bezier = new joint.dia.Link({
+    source: { x: 20, y: 20 },
+    target: { x: 200, y: 200 },
+    attrs: {},
+    vertices: [{ x: 40, y: 30 }, { x: 50, y: 90 },{ x: 75, y: 100 },{ x: 40, y: 80 },{ x: 20, y: 40 }],
+});
+
+branch.set('smooth', true)
+
+
+graph.addCell([bezier]);
+</script>
